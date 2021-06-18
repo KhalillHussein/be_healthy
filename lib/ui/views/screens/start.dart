@@ -56,13 +56,6 @@ class StartScreen extends StatelessWidget {
             ),
             label: 'Аккаунт',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.more_horiz,
-              size: 30,
-            ),
-            label: 'О нас',
-          ),
         ],
       ),
     );

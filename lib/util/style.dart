@@ -11,19 +11,17 @@ class Style {
   );
 
   static final ThemeData light = ThemeData(
-    accentColor: Color(0xFF2E5FE3),
+    accentColor: kAccentColor,
     appBarTheme: AppBarTheme(titleSpacing: 0.0),
-    buttonTheme: ButtonThemeData(buttonColor: kLightAccentColor),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      elevation: 8.0,
-      selectedItemColor: kLightSecondaryColor,
+      backgroundColor: kNavBarColor,
       type: BottomNavigationBarType.fixed,
     ),
+    primaryColor: kPrimaryColor,
     brightness: Brightness.light,
-    errorColor: kLightErrorColor,
     pageTransitionsTheme: _pageTransitionsTheme,
     // primaryColor: Colors.white,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: kPrimaryColor,
     // textTheme: GoogleFonts.rubikTextTheme(ThemeData.light().textTheme),
   );
 }

@@ -26,7 +26,7 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const pageDecoration = PageDecoration(
+    final pageDecoration = PageDecoration(
       contentMargin: const EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 0.0),
       titleTextStyle: TextStyle(
         fontSize: 20.0,
@@ -34,8 +34,12 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
         color: Color(0xFF0B225A),
         letterSpacing: 0.15,
       ),
-      bodyTextStyle: TextStyle(
-          fontSize: 18.0, color: Color(0xFF5C698B), letterSpacing: 0.5),
+      bodyTextStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
+            fontSize: 18.0,
+            fontWeight: FontWeight.w400,
+            color: Color(0xFF5C698B),
+            letterSpacing: 0.5,
+          ),
       descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: Colors.white,
       imagePadding: EdgeInsets.only(bottom: 8),
@@ -88,7 +92,7 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
           child: Text(
             'Продолжить',
             style: TextStyle(
-              letterSpacing: 0.15,
+              letterSpacing: 0.75,
               fontWeight: FontWeight.w500,
             ),
           ),

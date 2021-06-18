@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'index.dart';
+
 class LoginScreen extends StatelessWidget {
   static const route = '/login';
 
@@ -14,10 +16,11 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Spacer(flex: 3),
             Text(
               'Вход',
               style: Theme.of(context).textTheme.headline4?.copyWith(
-                    color: Colors.black,
+                    color: Color(0xFF0B225A),
                   ),
             ),
             const SizedBox(height: 40),
@@ -66,14 +69,51 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Text(
-              'Продолжить без входа',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.subtitle2?.copyWith(
-                    color: Color(0xFF5C698B),
-                    fontWeight: FontWeight.w400,
-                  ),
+            GestureDetector(
+              onTap: () =>
+                  Navigator.pushReplacementNamed(context, StartScreen.route),
+              child: Text(
+                'Продолжить без входа',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                      color: Color(0xFF5C698B),
+                      fontWeight: FontWeight.w400,
+                    ),
+              ),
             ),
+            Spacer(
+              flex: 3,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Впервые здесь?',
+                  style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                        color: Color(0xFF0B225A),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                        letterSpacing: 0.5,
+                      ),
+                ),
+                const SizedBox(
+                  width: 3,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    'Регистрация',
+                    style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                          color: Theme.of(context).accentColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                          letterSpacing: 0.5,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
           ],
         ),
       ),
