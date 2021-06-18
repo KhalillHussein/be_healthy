@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+
 import 'package:medicine_app/ui/views/screens/index.dart';
 
 class IntrodutionScreen extends StatefulWidget {
@@ -15,12 +15,10 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Navigator.of(context).pushNamed(LoginScreen.route);
+    Navigator.of(context).pushReplacementNamed(LoginScreen.route);
   }
 
-  Widget _buildImage(
-    String assetName,
-  ) {
+  Widget _buildImage(String assetName) {
     return Image.asset('assets/$assetName');
   }
 
@@ -41,6 +39,7 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
             letterSpacing: 0.5,
           ),
       descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      titlePadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: Colors.white,
       imagePadding: EdgeInsets.only(bottom: 8),
     );
@@ -52,14 +51,14 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
         PageViewModel(
           title: "Привет!",
           body:
-              "Это приложение поможет тебе следить за своим здоровьем, а так же проконсультироваться о его состоянии с врачем",
+              "Это приложение поможет тебе следить за своим здоровьем, и получить помощь специалиста",
           image: _buildImage('first.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Как пользоваться?",
           body:
-              "Для использования полного функционала приложения необходимо войти, но поконсультироваться с дежурным врачем можно и без входа",
+              "Отслеживайте состояние своего здоровья, консультируйтесь со специалистом",
           image: _buildImage('second.png'),
           decoration: pageDecoration,
         ),
