@@ -34,6 +34,11 @@ class Routes {
             settings: routeSettings,
             builder: (_) => AppointScreen(),
           );
+        case SymptomChatScreen.route:
+          return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (_) => SymptomChatScreen(),
+          );
         default:
           return errorRoute(routeSettings);
       }

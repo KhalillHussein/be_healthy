@@ -148,6 +148,9 @@ class ServicesWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: InkWell(
+                  onTap: () => {
+                    Navigator.pushNamed(context, ChatScreen.route),
+                  },
                   child: Container(
                     height: 108,
                     decoration: BoxDecoration(
@@ -352,6 +355,9 @@ class ServicesWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: InkWell(
+                  onTap: () => {
+                    Navigator.pushNamed(context, SymptomChatScreen.route),
+                  },
                   child: Container(
                     height: 108,
                     decoration: BoxDecoration(
