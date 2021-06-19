@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import 'package:medicine_app/ui/views/screens/index.dart';
+import 'package:medicine_app/ui/widgets/gradient_button.dart';
 
 class IntrodutionScreen extends StatefulWidget {
   static const route = '/';
@@ -15,7 +16,7 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Navigator.of(context).pushReplacementNamed(LoginScreen.route);
+    Navigator.of(context).pushNamed(LoginScreen.route);
   }
 
   Widget _buildImage(String assetName) {
@@ -25,6 +26,8 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
   @override
   Widget build(BuildContext context) {
     final pageDecoration = PageDecoration(
+      imageFlex: 4,
+      bodyFlex: 3,
       contentMargin: const EdgeInsets.fromLTRB(40.0, 0.0, 40.0, 0.0),
       titleTextStyle: TextStyle(
         fontSize: 20.0,
@@ -38,10 +41,10 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
             color: Color(0xFF5C698B),
             letterSpacing: 0.5,
           ),
-      descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      titlePadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      imagePadding: EdgeInsets.only(bottom: 14),
+      // descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      // titlePadding: EdgeInsets.fromLTRB(16.0, 14.0, 16.0, 16.0),
       pageColor: Colors.white,
-      imagePadding: EdgeInsets.only(bottom: 8),
     );
 
     return IntroductionScreen(
@@ -50,8 +53,7 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
       pages: [
         PageViewModel(
           title: "Привет!",
-          body:
-              "Это приложение поможет тебе следить за своим здоровьем, и получить помощь специалиста",
+          body: "Это приложение поможет тебе следить за своим здоровьем",
           image: _buildImage('first.png'),
           decoration: pageDecoration,
         ),
@@ -63,7 +65,7 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
           decoration: pageDecoration,
         ),
       ],
-      onDone: () => _onIntroEnd(context),
+      // onDone: () => _onIntroEnd(context),
       //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
       // showSkipButton: true,
       showDoneButton: false,
@@ -72,31 +74,17 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
       nextFlex: 0,
       globalFooter: Padding(
         padding: const EdgeInsets.only(bottom: 80.0),
-        child: MaterialButton(
-          elevation: 2,
-          disabledColor: Theme.of(context).brightness == Brightness.light
-              ? Colors.black12
-              : Colors.white12,
-          textColor: Colors.white,
-          color: Theme.of(context).accentColor,
-          shape: const StadiumBorder(),
+        child: GradientButton(
+          label: 'Продолжить',
           onPressed: () {
-            print(introKey.currentState?.controller.page);
             introKey.currentState?.controller.page != 1
                 ? introKey.currentState?.controller.nextPage(
                     duration: Duration(milliseconds: 250), curve: Curves.easeIn)
                 : _onIntroEnd(context);
           },
-          padding: EdgeInsets.symmetric(horizontal: 100, vertical: 12),
-          child: Text(
-            'Продолжить',
-            style: TextStyle(
-              letterSpacing: 0.75,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
         ),
       ),
+
       //rtl: true, // Display as right-to-left
       // skip: const Text('Skip'),
       // done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeTab extends StatelessWidget {
-  const HomeTab({Key? key}) : super(key: key);
+class MedkartaTab extends StatelessWidget {
+  const MedkartaTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class HomeTab extends StatelessWidget {
             automaticallyImplyLeading: false,
             expandedHeight: MediaQuery.of(context).size.height * 0.1,
             title: Text(
-              'Главная',
+              'Медкарта',
               style: Theme.of(context).textTheme.headline5!.copyWith(
                     color: Color(0xFF0B225A),
                     fontWeight: FontWeight.w700,

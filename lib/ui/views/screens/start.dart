@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/navigation.dart';
-import '../tabs/home.dart';
+import '../tabs/index.dart';
 
 class StartScreen extends StatelessWidget {
   static const route = '/start';
 
   final List<Widget> _tabs = [
     HomeTab(),
-    Center(child: Text('Book')),
+    MedkartaTab(),
     Center(child: Text('Account')),
     Center(child: Text('Settings')),
   ];
@@ -34,25 +34,28 @@ class StartScreen extends StatelessWidget {
       builder: (ctx, tabsData, _) => BottomNavigationBar(
         onTap: (index) => tabsData.currentIndex = index,
         currentIndex: tabsData.currentIndex,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 30,
+            icon: Image.asset(
+              'assets/Home.png',
+              width: 24,
+              height: 24,
             ),
-            label: 'Домой',
+            label: 'Главная',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.credit_card,
-              size: 30,
+            icon: Image.asset(
+              'assets/MedCard.png',
+              width: 24,
+              height: 24,
             ),
             label: 'Медкарта',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 30,
+            icon: Image.asset(
+              'assets/Profile.png',
+              width: 24,
+              height: 24,
             ),
             label: 'Аккаунт',
           ),

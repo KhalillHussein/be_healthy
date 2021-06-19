@@ -12,16 +12,16 @@ class Style {
 
   static final ThemeData light = ThemeData(
     accentColor: kAccentColor,
-    appBarTheme: AppBarTheme(titleSpacing: 0.0),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: kNavBarColor,
       type: BottomNavigationBarType.fixed,
+      showUnselectedLabels: false,
+      showSelectedLabels: true,
+      selectedItemColor: Color(0xFF5C698B),
     ),
     primaryColor: kPrimaryColor,
-    brightness: Brightness.light,
+    // brightness: Brightness.light,
     pageTransitionsTheme: _pageTransitionsTheme,
-    // primaryColor: Colors.white,
     scaffoldBackgroundColor: kPrimaryColor,
-    // textTheme: GoogleFonts.rubikTextTheme(ThemeData.light().textTheme),
   );
 }

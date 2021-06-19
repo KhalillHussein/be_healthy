@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicine_app/ui/widgets/gradient_button.dart';
 
 import 'index.dart';
 
@@ -50,23 +51,10 @@ class LoginScreen extends StatelessWidget {
                   fillColor: Color(0xFFF4F5FC)),
             ),
             const SizedBox(height: 20),
-            MaterialButton(
-              elevation: 2,
-              disabledColor: Theme.of(context).brightness == Brightness.light
-                  ? Colors.black12
-                  : Colors.white12,
-              textColor: Colors.white,
-              color: Theme.of(context).accentColor,
-              padding: EdgeInsets.symmetric(vertical: 12),
-              shape: const StadiumBorder(),
+            GradientButton(
+              label: 'Войти',
               onPressed: () {},
-              child: Text(
-                'Войти',
-                style: TextStyle(
-                  letterSpacing: 0.75,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 143, vertical: 12),
             ),
             const SizedBox(height: 16),
             GestureDetector(
