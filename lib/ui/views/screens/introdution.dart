@@ -73,8 +73,8 @@ class _IntrodutionScreenState extends State<IntrodutionScreen> {
       skipFlex: 0,
       nextFlex: 0,
       globalFooter: Padding(
-        padding: const EdgeInsets.only(bottom: 80.0),
-        child: GradientButton(
+        padding: const EdgeInsets.only(bottom: 80.0, left: 80, right: 80),
+        child: CustomGradientButton(
           label: 'Продолжить',
           onPressed: () {
             introKey.currentState?.controller.page != 1

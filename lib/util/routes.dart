@@ -24,11 +24,6 @@ class Routes {
             settings: routeSettings,
             builder: (_) => LoginScreen(),
           );
-        case MapScreen.route:
-          return MaterialPageRoute(
-            settings: routeSettings,
-            builder: (_) => MapScreen(),
-          );
         case IntrodutionScreen.route:
           return MaterialPageRoute(
             settings: routeSettings,
@@ -39,7 +34,6 @@ class Routes {
             settings: routeSettings,
             builder: (_) => AppointScreen(),
           );
-
         case SymptomChatScreen.route:
           return MaterialPageRoute(
             settings: routeSettings,

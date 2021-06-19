@@ -161,11 +161,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fillColor: Color(0xFFF4F5FC)),
                     ),
                     const SizedBox(height: 20),
-                    GradientButton(
+                    CustomGradientButton(
                       label: 'Зарегистрироваться',
                       onPressed: _trySubmit,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 90, vertical: 12),
                     ),
                     const SizedBox(height: 16),
                     GestureDetector(

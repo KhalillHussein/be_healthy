@@ -81,7 +81,7 @@ class _ChatScreenState extends State<SymptomChatScreen> {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Онлайн-консультация',
+          'Симптом-чекер',
           style: Theme.of(context).textTheme.headline5!.copyWith(
                 color: Color(0xFF0B225A),
                 fontWeight: FontWeight.w700,

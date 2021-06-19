@@ -59,6 +59,12 @@ class _ProfileTabState extends State<ProfileTab> {
               child: StreamBuilder(
                   stream: FirebaseAuth.instance.authStateChanges(),
                   builder: (ctx, userSnapshot) {
+                    if (userSnapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                     if (!userSnapshot.hasData) {
                       return ErrorScreen();
                     }
@@ -88,7 +94,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               _buildBadge('Ревматоидный артрит'),
                             ],
                           ),
-                          const SizedBox(height: 12.6),
+                          const SizedBox(height: 25),
                           Wrap(
                             runSpacing: 6,
                             children: [
@@ -108,7 +114,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               _buildBadge('Супрастин'),
                             ],
                           ),
-                          const SizedBox(height: 12.6),
+                          const SizedBox(height: 25),
                           Row(
                             children: [
                               Text(
@@ -126,7 +132,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               _buildBadge('81.1 кг'),
                             ],
                           ),
-                          const SizedBox(height: 12.6),
+                          const SizedBox(height: 25),
                           Row(
                             children: [
                               Text(
@@ -144,7 +150,7 @@ class _ProfileTabState extends State<ProfileTab> {
                               _buildBadge('189 см'),
                             ],
                           ),
-                          const SizedBox(height: 12.6),
+                          const SizedBox(height: 25),
                           Text(
                             'Редактировать',
                             style:
@@ -154,7 +160,7 @@ class _ProfileTabState extends State<ProfileTab> {
                                       fontSize: 18,
                                     ),
                           ),
-                          const SizedBox(height: 12.6),
+                          const SizedBox(height: 25),
                           Text(
                             'Поддержка',
                             style:
@@ -164,7 +170,7 @@ class _ProfileTabState extends State<ProfileTab> {
                                       fontSize: 18,
                                     ),
                           ),
-                          const SizedBox(height: 12.6),
+                          const SizedBox(height: 25),
                           GestureDetector(
                             onTap: FirebaseAuth.instance.signOut,
                             child: Text(
@@ -180,7 +186,7 @@ class _ProfileTabState extends State<ProfileTab> {
                             ),
                           ),
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.18,
+                            height: MediaQuery.of(context).size.height * 0.08,
                           ),
                           Align(
                             alignment: Alignment.center,
