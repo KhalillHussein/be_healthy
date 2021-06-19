@@ -1,3 +1,4 @@
+export 'appoint.dart';
 export 'chat.dart';
 export 'error.dart';
 export 'introdution.dart';

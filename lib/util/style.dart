@@ -5,7 +5,7 @@ import 'colors.dart';
 class Style {
   static final _pageTransitionsTheme = PageTransitionsTheme(
     builders: const {
-      TargetPlatform.android: ZoomPageTransitionsBuilder(),
+      TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
     },
   );
@@ -14,10 +14,13 @@ class Style {
     accentColor: kAccentColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: kNavBarColor,
+      elevation: 0.0,
       type: BottomNavigationBarType.fixed,
-      showUnselectedLabels: false,
-      showSelectedLabels: true,
       selectedItemColor: Color(0xFF5C698B),
+      unselectedLabelStyle:
+          TextStyle(fontWeight: FontWeight.w400, letterSpacing: 0.4),
+      selectedLabelStyle:
+          TextStyle(fontWeight: FontWeight.w700, letterSpacing: 0.4),
     ),
     primaryColor: kPrimaryColor,
     // brightness: Brightness.light,

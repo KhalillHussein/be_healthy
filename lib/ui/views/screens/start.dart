@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicine_app/ui/views/tabs/profile.dart';
 
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ class StartScreen extends StatelessWidget {
   final List<Widget> _tabs = [
     HomeTab(),
     MedkartaTab(),
-    Center(child: Text('Account')),
+    ProfileTab(),
     Center(child: Text('Settings')),
   ];
 
@@ -38,26 +39,26 @@ class StartScreen extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/Home.png',
-              width: 24,
-              height: 24,
+              width: 30,
+              height: 30,
             ),
             label: 'Главная',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/MedCard.png',
-              width: 24,
-              height: 24,
+              width: 30,
+              height: 30,
             ),
             label: 'Медкарта',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/Profile.png',
-              width: 24,
-              height: 24,
+              width: 30,
+              height: 30,
             ),
-            label: 'Аккаунт',
+            label: 'Профиль',
           ),
         ],
       ),

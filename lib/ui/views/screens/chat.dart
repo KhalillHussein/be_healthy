@@ -72,7 +72,20 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Диалог со специалистом"),
+        elevation: 0.0,
+        titleSpacing: 0.0,
+        leading: IconButton(
+          icon: Image.asset('assets/Back.png'),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'Онлайн-консультация',
+          style: Theme.of(context).textTheme.headline5!.copyWith(
+                color: Color(0xFF0B225A),
+                fontWeight: FontWeight.w700,
+                fontSize: 24,
+              ),
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
@@ -99,8 +112,27 @@ class _ChatScreenState extends State<ChatScreen> {
                 sendOnEnter: true,
                 textInputAction: TextInputAction.send,
                 user: user,
-                inputDecoration:
-                    InputDecoration.collapsed(hintText: "Add message here..."),
+                messageDecorationBuilder: (message, isUser) => BoxDecoration(
+                  color: isUser! ? Color(0xFFD9DCF2) : Color(0xFF7D98FB),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
+                    bottomLeft:
+                        !isUser ? Radius.circular(0) : Radius.circular(20.0),
+                    bottomRight:
+                        isUser ? Radius.circular(0) : Radius.circular(20.0),
+                  ),
+                ),
+                inputDecoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    filled: true,
+                    hintStyle: TextStyle(
+                        color: Color(0xFF5C698B), letterSpacing: 0.15),
+                    hintText: "Введите сообщение",
+                    fillColor: Color(0xFFF4F5FC)),
                 dateFormat: DateFormat.yMMMMEEEEd('Ru'),
                 timeFormat: DateFormat('HH:mm'),
                 messages: messages,

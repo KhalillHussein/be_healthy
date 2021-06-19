@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screens/index.dart';
+
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
 
@@ -9,6 +11,7 @@ class HomeTab extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            toolbarHeight: 86,
             automaticallyImplyLeading: false,
             expandedHeight: MediaQuery.of(context).size.height * 0.1,
             title: Text(
@@ -25,7 +28,22 @@ class HomeTab extends StatelessWidget {
           SliverSafeArea(
             top: false,
             sliver: SliverToBoxAdapter(
-              child: Container(),
+              child: Center(
+                child: Column(
+                  children: [
+                    TextButton(
+                      child: Text('Чат'),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, ChatScreen.route),
+                    ),
+                    TextButton(
+                      child: Text('Запись'),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, AppointScreen.route),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
