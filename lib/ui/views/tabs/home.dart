@@ -119,7 +119,6 @@ class _HomeTabState extends State<HomeTab> {
                             ),
                             child: InkWell(
                               onTap: () => {
-                                print(showStoryes),
                                 setState(() {
                                   showStoryes = true;
                                 })
