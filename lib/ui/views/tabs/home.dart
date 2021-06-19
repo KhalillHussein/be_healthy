@@ -669,8 +669,7 @@ class HorisontalCardsWidget extends StatelessWidget {
 }
 
 class SearchWidget extends StatelessWidget {
-  TextEditingController controller =
-      TextEditingController(text: 'ФИО, специальность или болезнь');
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -679,6 +678,7 @@ class SearchWidget extends StatelessWidget {
         child: TextField(
           controller: controller,
           decoration: InputDecoration(
+            hintText: 'ФИО, специальность или болезнь',
             fillColor: Colors.deepPurpleAccent.withOpacity(.1),
             filled: true,
             suffixIcon: Icon(
