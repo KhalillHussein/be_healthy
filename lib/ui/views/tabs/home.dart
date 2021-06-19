@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:story_view/story_view.dart';
 import '../screens/index.dart';
 
-class HomeTab extends StatelessWidget {
-  const HomeTab({Key? key}) : super(key: key);
+class HomeTab extends StatefulWidget {
+  @override
+  _HomeTabState createState() => _HomeTabState();
+}
 
+class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
+    StoryController storyController = StoryController();
+    List<StoryItem> storyItems = [
+      StoryItem.text(
+        title: "ddddd",
+        backgroundColor: Colors.orange,
+        roundedTop: true,
+      ),
+      StoryItem.text(
+        title: "ффффф",
+        backgroundColor: Colors.blue,
+        roundedTop: true,
+      ),
+    ];
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
@@ -16,7 +33,51 @@ class HomeTab extends StatelessWidget {
             children: [
               HeaderWidget(),
               SearchWidget(),
-              HorisontalCardsWidget(),
+              Container(
+                margin: EdgeInsets.all(12),
+                height: 148.0,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      width: 148,
+                      child: StoryView(
+                          storyItems: storyItems,
+                          controller: storyController,
+                          repeat: true,
+                          onStoryShow: (s) {},
+                          onComplete: () {},
+                          onVerticalSwipeComplete: (direction) {
+                            if (direction == Direction.down) {
+                              Navigator.pop(context);
+                            }
+                          }),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: InkWell(
+                        child: Container(
+                          width: 148,
+                          decoration: BoxDecoration(
+                            borderRadius: new BorderRadius.all(
+                              Radius.circular(12.0),
+                            ),
+                            gradient: LinearGradient(
+                                colors: [
+                                  Colors.deepPurpleAccent.withOpacity(.2),
+                                  Colors.deepPurpleAccent.withOpacity(.1),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomCenter),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Text(
                 'Сервисы',
                 style: TextStyle(
@@ -594,80 +655,6 @@ class TrackersWidget extends StatelessWidget {
   }
 }
 
-class HorisontalCardsWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        margin: EdgeInsets.all(12),
-        height: 148.0,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: InkWell(
-                child: Container(
-                  width: 148,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                    gradient: LinearGradient(colors: [
-                      Colors.deepPurpleAccent.withOpacity(.2),
-                      Colors.deepPurpleAccent.withOpacity(.1),
-                    ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: InkWell(
-                child: Container(
-                  width: 148,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                    gradient: LinearGradient(colors: [
-                      Colors.deepPurpleAccent.withOpacity(.2),
-                      Colors.deepPurpleAccent.withOpacity(.1),
-                    ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: InkWell(
-                child: Container(
-                  width: 148,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                    gradient: LinearGradient(colors: [
-                      Colors.deepPurpleAccent.withOpacity(.2),
-                      Colors.deepPurpleAccent.withOpacity(.1),
-                    ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class SearchWidget extends StatelessWidget {
   TextEditingController controller = TextEditingController();
   @override
@@ -699,8 +686,6 @@ class SearchWidget extends StatelessWidget {
 }
 
 class HeaderWidget extends StatelessWidget {
-  TextEditingController controller =
-      TextEditingController(text: 'ФИО, специальность или болезнь');
   @override
   Widget build(BuildContext context) {
     return SafeArea(
