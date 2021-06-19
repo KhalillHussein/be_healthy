@@ -21,7 +21,8 @@ class _ChatScreenState extends State<ChatScreen> {
   final ChatUser user = ChatUser(
     name: "Гость",
     uid: "123456789",
-    avatar: "https://smcell.org/wp-content/uploads/2019/06/user-avatar-1.png",
+    avatar:
+        "https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg",
   );
 
   final ChatUser otherUser = ChatUser(
@@ -106,6 +107,9 @@ class _ChatScreenState extends State<ChatScreen> {
               var messages =
                   items.map((i) => ChatMessage.fromJson(i.data()!)).toList();
               return DashChat(
+                inputToolbarPadding:
+                    EdgeInsets.only(bottom: 20, left: 15, right: 15),
+                sendButtonBuilder: (Function onSend) => SizedBox(),
                 key: _chatViewKey,
                 inverted: false,
                 onSend: onSend,
@@ -130,28 +134,32 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     filled: true,
                     hintStyle: TextStyle(
-                        color: Color(0xFF5C698B), letterSpacing: 0.15),
+                        color: Color(0xFF5C698B),
+                        letterSpacing: 0.15,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400),
                     hintText: "Введите сообщение",
                     fillColor: Color(0xFFF4F5FC)),
-                dateFormat: DateFormat.yMMMMEEEEd('Ru'),
+                dateFormat: DateFormat.MMMMd('Ru'),
                 timeFormat: DateFormat('HH:mm'),
+                dateBuilder: (date) => Text(
+                  date,
+                  style: Theme.of(context).textTheme.caption!.copyWith(
+                        color: Color(0xFF5C698B),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                      ),
+                ),
                 messages: messages,
                 showUserAvatar: true,
                 showAvatarForEveryMessage: false,
                 scrollToBottom: false,
-                onPressAvatar: (ChatUser user) {
-                  print("OnPressAvatar: ${user.name}");
-                },
-                onLongPressAvatar: (ChatUser user) {
-                  print("OnLongPressAvatar: ${user.name}");
-                },
                 inputMaxLines: 5,
                 messageContainerPadding: EdgeInsets.only(left: 5.0, right: 5.0),
                 alwaysShowSend: true,
                 inputTextStyle: TextStyle(fontSize: 16.0),
                 inputContainerStyle: BoxDecoration(
-                  border: Border.all(width: 0.0),
-                  color: Colors.white,
+                  color: Colors.transparent,
                 ),
                 onQuickReply: (Reply reply) {
                   setState(() {
@@ -187,9 +195,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
                 shouldShowLoadEarlier: false,
                 showTraillingBeforeSend: true,
-                trailing: <Widget>[
+                leading: [
                   IconButton(
-                    icon: Icon(Icons.photo),
+                    icon: Icon(
+                      Icons.photo,
+                      color: Color(0xFF5C698B),
+                    ),
                     onPressed: () async {
                       final picker = ImagePicker();
                       PickedFile? result = await picker.getImage(
