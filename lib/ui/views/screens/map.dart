@@ -32,7 +32,7 @@ class _MapScreenState extends State<MapScreen> {
         return Scaffold(
           body: FlutterMap(
             options: MapOptions(
-              center: LatLng(51.5, -0.09),
+              center: LatLng(47.221809, 39.720261),
               zoom: 13.0,
             ),
             layers: [
@@ -45,16 +45,31 @@ class _MapScreenState extends State<MapScreen> {
                   Marker(
                     width: 80.0,
                     height: 80.0,
-                    point: LatLng(51.5, -0.09),
+                    point: LatLng(47.221809, 39.720261),
                     builder: (ctx) => Container(
                       child: IconButton(
-                        onPressed: () => {},
-                        icon: Icon(
-                          Icons.medical_services_rounded,
-                          size: 36,
-                          color: Colors.red,
-                        ),
-                      ),
+                          onPressed: () => {
+                                Navigator.pushNamed(
+                                    context, AppointScreen.route),
+                              },
+                          icon: Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: new BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: new BorderRadius.all(
+                                    const Radius.circular(100.0),
+                                  ),
+                                ),
+                                child: Icon(
+                                  Icons.medical_services_rounded,
+                                  size: 36,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ],
+                          )),
                     ),
                   ),
                 ],

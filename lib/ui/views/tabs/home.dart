@@ -102,7 +102,7 @@ class ServicesWidget extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () => {
-                    Navigator.pushNamed(context, MapScreen.route),
+                    Navigator.pushNamed(context, AppointScreen.route),
                   },
                   child: Container(
                     height: 108,
