@@ -34,6 +34,11 @@ class Routes {
             settings: routeSettings,
             builder: (_) => AppointScreen(),
           );
+        case RegisterScreen.route:
+          return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (_) => RegisterScreen(),
+          );
         default:
           return errorRoute(routeSettings);
       }

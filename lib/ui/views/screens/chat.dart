@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:dash_chat/dash_chat.dart';
+import 'package:medicine_app/util/text.dart';
 
 class ChatScreen extends StatefulWidget {
   static const route = '/chat';
@@ -61,12 +62,36 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
+  int messageCounter = 0;
+
   void onSend(ChatMessage message) {
-    print(message.toJson());
     FirebaseFirestore.instance
         .collection('users')
         .doc(DateTime.now().millisecondsSinceEpoch.toString())
-        .set(message.toJson());
+        .set(message.toJson())
+        .then((value) {
+      messageCounter <= 3
+          ? Future.delayed(Duration(seconds: 2)).then(
+              (value) => FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(DateTime.now().millisecondsSinceEpoch.toString())
+                  .set(
+                    ChatMessage(text: phrases[messageCounter], user: otherUser)
+                        .toJson(),
+                  )
+                  .then((value) {
+                messageCounter += 1;
+                _chatViewKey.currentState!.scrollController
+                  ..animateTo(
+                    _chatViewKey.currentState!.scrollController.position
+                        .maxScrollExtent,
+                    curve: Curves.easeOut,
+                    duration: const Duration(milliseconds: 100),
+                  );
+              }),
+            )
+          : null;
+    });
   }
 
   @override
@@ -167,7 +192,6 @@ class _ChatScreenState extends State<ChatScreen> {
                         text: reply.value,
                         createdAt: DateTime.now(),
                         user: user));
-
                     messages = [...messages];
                   });
 
