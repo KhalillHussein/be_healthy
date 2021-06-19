@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:medicine_app/ui/views/screens/error.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -54,118 +56,151 @@ class _ProfileTabState extends State<ProfileTab> {
           SliverSafeArea(
             top: false,
             sliver: SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildUserHeader(),
-                    const SizedBox(height: 25),
-                    Wrap(
-                      runSpacing: 6,
-                      children: [
-                        Text(
-                          'Хронические заболевания:',
-                          style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    color: Color(0xFF5C698B),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                  ),
-                        ),
-                        const SizedBox(width: 4),
-                        _buildBadge('Миопия'),
-                        _buildBadge('Ревматоидный артрит'),
-                      ],
-                    ),
-                    const SizedBox(height: 12.6),
-                    Wrap(
-                      runSpacing: 6,
-                      children: [
-                        Text(
-                          'Принимаемые лекарства:',
-                          style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    color: Color(0xFF5C698B),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                  ),
-                        ),
-                        const SizedBox(width: 4),
-                        _buildBadge('Мезим'),
-                        _buildBadge('Супрастин'),
-                      ],
-                    ),
-                    const SizedBox(height: 12.6),
-                    Row(
-                      children: [
-                        Text(
-                          'Вес:',
-                          style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    color: Color(0xFF5C698B),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                  ),
-                        ),
-                        const SizedBox(width: 4),
-                        _buildBadge('81.1 кг'),
-                      ],
-                    ),
-                    const SizedBox(height: 12.6),
-                    Row(
-                      children: [
-                        Text(
-                          'Рост:',
-                          style:
-                              Theme.of(context).textTheme.bodyText1!.copyWith(
-                                    color: Color(0xFF5C698B),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 18,
-                                  ),
-                        ),
-                        const SizedBox(width: 4),
-                        _buildBadge('189 см'),
-                      ],
-                    ),
-                    const SizedBox(height: 12.6),
-                    Text(
-                      'Редактировать',
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: Color(0xFF5C698B),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
+              child: StreamBuilder(
+                  stream: FirebaseAuth.instance.authStateChanges(),
+                  builder: (ctx, userSnapshot) {
+                    if (!userSnapshot.hasData) {
+                      return ErrorScreen();
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildUserHeader(),
+                          const SizedBox(height: 25),
+                          Wrap(
+                            runSpacing: 6,
+                            children: [
+                              Text(
+                                'Хронические заболевания:',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      color: Color(0xFF5C698B),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                              ),
+                              const SizedBox(width: 4),
+                              _buildBadge('Миопия'),
+                              _buildBadge('Ревматоидный артрит'),
+                            ],
                           ),
-                    ),
-                    const SizedBox(height: 12.6),
-                    Text(
-                      'Поддержка',
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: Color(0xFF5C698B),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
+                          const SizedBox(height: 12.6),
+                          Wrap(
+                            runSpacing: 6,
+                            children: [
+                              Text(
+                                'Принимаемые лекарства:',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      color: Color(0xFF5C698B),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                              ),
+                              const SizedBox(width: 4),
+                              _buildBadge('Мезим'),
+                              _buildBadge('Супрастин'),
+                            ],
                           ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.22,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Версия 0.0.1 beta',
-                        style: Theme.of(context).textTheme.caption!.copyWith(
-                              color: Color(0xFF5C698B),
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 0.4,
-                              fontSize: 12,
+                          const SizedBox(height: 12.6),
+                          Row(
+                            children: [
+                              Text(
+                                'Вес:',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      color: Color(0xFF5C698B),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                              ),
+                              const SizedBox(width: 4),
+                              _buildBadge('81.1 кг'),
+                            ],
+                          ),
+                          const SizedBox(height: 12.6),
+                          Row(
+                            children: [
+                              Text(
+                                'Рост:',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      color: Color(0xFF5C698B),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                              ),
+                              const SizedBox(width: 4),
+                              _buildBadge('189 см'),
+                            ],
+                          ),
+                          const SizedBox(height: 12.6),
+                          Text(
+                            'Редактировать',
+                            style:
+                                Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: Color(0xFF5C698B),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                          ),
+                          const SizedBox(height: 12.6),
+                          Text(
+                            'Поддержка',
+                            style:
+                                Theme.of(context).textTheme.bodyText1!.copyWith(
+                                      color: Color(0xFF5C698B),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 18,
+                                    ),
+                          ),
+                          const SizedBox(height: 12.6),
+                          GestureDetector(
+                            onTap: FirebaseAuth.instance.signOut,
+                            child: Text(
+                              'Выход',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1!
+                                  .copyWith(
+                                    color: Color(0xFF5C698B),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 18,
+                                  ),
                             ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.18,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Версия 0.0.1 beta',
+                              style:
+                                  Theme.of(context).textTheme.caption!.copyWith(
+                                        color: Color(0xFF5C698B),
+                                        fontWeight: FontWeight.w400,
+                                        letterSpacing: 0.4,
+                                        fontSize: 12,
+                                      ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-              ),
+                    );
+                  }),
             ),
-          ),
+          )
         ],
       ),
     );

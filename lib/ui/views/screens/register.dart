@@ -5,23 +5,24 @@ import 'package:medicine_app/ui/widgets/gradient_button.dart';
 
 import 'index.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const route = '/login';
+class RegisterScreen extends StatefulWidget {
+  static const route = '/register';
 
-  const LoginScreen({Key? key}) : super(key: key);
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final _auth = FirebaseAuth.instance;
   bool _isLoading = false;
 
   Map<String, String> _formData = {
-    'login': '',
+    'username': '',
+    'phone': '',
     'password': '',
   };
 
@@ -74,10 +75,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.2,
                     ),
                     Text(
-                      'Вход',
+                      'Регистрация',
                       style: Theme.of(context).textTheme.headline4?.copyWith(
                             color: Color(0xFF0B225A),
                             letterSpacing: 0.25,
@@ -87,15 +88,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 40),
                     TextFormField(
-                      key: ValueKey('login'),
+                      key: ValueKey('username'),
                       validator: (value) {
-                        if (value!.isEmpty || !value.contains('@')) {
-                          return 'Пожалуйста введите корректный e-mail';
+                        if (value!.isEmpty || value.length < 3) {
+                          return 'Введите корректные даннык';
                         }
                         return null;
                       },
                       onSaved: (value) {
-                        _formData['login'] = value!;
+                        _formData['username'] = value!;
                       },
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -105,8 +106,35 @@ class _LoginScreenState extends State<LoginScreen> {
                           filled: true,
                           hintStyle: TextStyle(
                               color: Color(0xFF5C698B), letterSpacing: 0.15),
-                          hintText: "Логин",
+                          hintText: "ФИО",
                           fillColor: Color(0xFFF4F5FC)),
+                    ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      key: ValueKey('phone'),
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                        filled: true,
+                        alignLabelWithHint: false,
+                        hasFloatingPlaceholder: false,
+                        fillColor: Color(0xFFF4F5FC),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        hintStyle: TextStyle(
+                            color: Color(0xFF5C698B), letterSpacing: 0.15),
+                        labelText: 'Номер телефона',
+                        prefixText: '+7 ',
+                      ),
+                      keyboardType: TextInputType.phone,
+                      onSaved: (value) {
+                        _formData['phone'] = value!;
+                      },
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly,
+                        _phoneNumberFormatter,
+                      ],
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
@@ -134,17 +162,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 20),
                     GradientButton(
-                      label: 'Войти',
+                      label: 'Зарегистрироваться',
                       onPressed: _trySubmit,
                       padding:
-                          EdgeInsets.symmetric(horizontal: 143, vertical: 12),
+                          EdgeInsets.symmetric(horizontal: 90, vertical: 12),
                     ),
                     const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () => Navigator.pushReplacementNamed(
                           context, StartScreen.route),
                       child: Text(
-                        'Продолжить без входа',
+                        'Продолжить без регистрации',
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.subtitle2?.copyWith(
                               color: Color(0xFF5C698B),
@@ -153,13 +181,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.2,
+                      height: MediaQuery.of(context).size.height * 0.14,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Впервые здесь?',
+                          'Уже зарегистрированы?',
                           style:
                               Theme.of(context).textTheme.subtitle2?.copyWith(
                                     color: Color(0xFF0B225A),
@@ -173,9 +201,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         GestureDetector(
                           onTap: () => Navigator.pushReplacementNamed(
-                              context, RegisterScreen.route),
+                              context, LoginScreen.route),
                           child: Text(
-                            'Регистрация',
+                            'Вход',
                             style:
                                 Theme.of(context).textTheme.subtitle2?.copyWith(
                                       color: Theme.of(context).accentColor,
