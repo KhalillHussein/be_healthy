@@ -1,48 +1,226 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:story_view/story_view.dart';
 import '../screens/index.dart';
 
-class HomeTab extends StatelessWidget {
-  const HomeTab({Key? key}) : super(key: key);
+class HomeTab extends StatefulWidget {
+  @override
+  _HomeTabState createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+  bool showStoryes = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeaderWidget(),
-              SearchWidget(),
-              HorisontalCardsWidget(),
-              Text(
-                'Сервисы',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              ServicesWidget(),
-              Text(
-                'Трекеры',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              TrackersWidget(),
-            ],
+    StoryController storyController = StoryController();
+    List<StoryItem> storyItems = [
+      StoryItem.inlineImage(
+          url:
+              'https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300',
+          caption: Text(
+            'Вакцинация от COVID-19 — зло или возможность?',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 32),
           ),
-        ),
-      ), /* CustomScrollView(
+          controller: storyController),
+      StoryItem.inlineImage(
+          url:
+              'https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300',
+          caption: Text(
+            'Вакцинация от COVID-19 — зло или возможность?',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 32),
+          ),
+          controller: storyController),
+      StoryItem.inlineImage(
+          url:
+              'https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300',
+          caption: Text(
+            'Вакцинация от COVID-19 — зло или возможность?',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 32),
+          ),
+          controller: storyController),
+    ];
+    return Scaffold(
+      body: showStoryes
+          ? StoryView(
+              storyItems: storyItems,
+              controller: storyController,
+              repeat: true,
+              onStoryShow: (s) {},
+              onComplete: () {
+                setState(() {
+                  showStoryes = false;
+                });
+              },
+              onVerticalSwipeComplete: (direction) {
+                if (direction == Direction.down) {
+                  Navigator.pop(context);
+                }
+              })
+          : Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HeaderWidget(),
+                    SearchWidget(),
+                    Container(
+                      margin: EdgeInsets.all(12),
+                      height: 148.0,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: InkWell(
+                              onTap: () => {
+                                print(showStoryes),
+                                setState(() {
+                                  showStoryes = true;
+                                })
+                              },
+                              child: Container(
+                                width: 148,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    Radius.circular(12.0),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  ),
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 56),
+                                  child: Text(
+                                    "Вакцинация от COVID-19 — зло или возможность?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      backgroundColor: Colors.black38,
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: InkWell(
+                              onTap: () => {
+                                setState(() {
+                                  showStoryes = true;
+                                })
+                              },
+                              child: Container(
+                                width: 148,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    Radius.circular(12.0),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  ),
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 56),
+                                  child: Text(
+                                    "Вакцинация от COVID-19 — зло или возможность?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      backgroundColor: Colors.black38,
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: InkWell(
+                              onTap: () => {
+                                print(showStoryes),
+                                setState(() {
+                                  showStoryes = true;
+                                })
+                              },
+                              child: Container(
+                                width: 148,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    Radius.circular(12.0),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  ),
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 56),
+                                  child: Text(
+                                    "Вакцинация от COVID-19 — зло или возможность?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      backgroundColor: Colors.black38,
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 24),
+                    Text(
+                      '   Сервисы',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    ServicesWidget(),
+                    SizedBox(height: 36),
+                    Text(
+                      '   Трекеры',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    TrackersWidget(),
+                  ],
+                ),
+              ),
+            ), /* CustomScrollView(
         slivers: [
           SliverAppBar(
             toolbarHeight: 86,
@@ -102,7 +280,7 @@ class ServicesWidget extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () => {
-                    Navigator.pushNamed(context, MapScreen.route),
+                    Navigator.pushNamed(context, AppointScreen.route),
                   },
                   child: Container(
                     height: 108,
@@ -115,20 +293,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.purpleAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width / 2.2,
+                    width: MediaQuery.of(context).size.width * 0.47,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width / 4,
+                              width: MediaQuery.of(context).size.width * 0.2,
                               child: Text(
                                 'Запись в клинику',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -136,9 +314,7 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
-                            ),
+                            Image.asset('assets/Calendar.png'),
                           ],
                         ),
                       ],
@@ -165,20 +341,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.redAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width / 2.1,
+                    width: MediaQuery.of(context).size.width * 0.47,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width / 3.5,
+                              width: MediaQuery.of(context).size.width * 0.2,
                               child: Text(
                                 'Онлайн-консультация',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -186,8 +362,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Cloud.png'),
                             ),
                           ],
                         ),
@@ -220,20 +396,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.lightBlue.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.41,
+                    width: MediaQuery.of(context).size.width * 0.44,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.2,
+                              width: MediaQuery.of(context).size.width * 0.14,
                               child: Text(
                                 'Вызов врача на дом',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -241,8 +417,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Phone.png'),
                             ),
                           ],
                         ),
@@ -274,13 +450,13 @@ class ServicesWidget extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.3,
+                              width: MediaQuery.of(context).size.width * 0.24,
                               child: Text(
                                 'Плановые осмотры',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -288,8 +464,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Clock.png'),
                             ),
                           ],
                         ),
@@ -322,20 +498,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.redAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.53,
+                    width: MediaQuery.of(context).size.width * 0.52,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.3,
+                              width: MediaQuery.of(context).size.width * 0.27,
                               child: Text(
                                 'Прием медикоментов',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -343,8 +519,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Clock-1.png'),
                             ),
                           ],
                         ),
@@ -372,20 +548,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.purpleAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.42,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.2,
+                              width: MediaQuery.of(context).size.width * 0.17,
                               child: Text(
                                 'Симптом чекер',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -393,8 +569,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Hearts.png'),
                             ),
                           ],
                         ),
@@ -454,7 +630,7 @@ class TrackersWidget extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.all(8),
                               child: Text(
-                                '0',
+                                '1328',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 34,
@@ -541,7 +717,7 @@ class TrackersWidget extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.all(8),
                               child: Text(
-                                '1223',
+                                '1940',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 34,
@@ -594,83 +770,8 @@ class TrackersWidget extends StatelessWidget {
   }
 }
 
-class HorisontalCardsWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        margin: EdgeInsets.all(12),
-        height: 148.0,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: InkWell(
-                child: Container(
-                  width: 148,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                    gradient: LinearGradient(colors: [
-                      Colors.deepPurpleAccent.withOpacity(.2),
-                      Colors.deepPurpleAccent.withOpacity(.1),
-                    ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: InkWell(
-                child: Container(
-                  width: 148,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                    gradient: LinearGradient(colors: [
-                      Colors.deepPurpleAccent.withOpacity(.2),
-                      Colors.deepPurpleAccent.withOpacity(.1),
-                    ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: InkWell(
-                child: Container(
-                  width: 148,
-                  decoration: BoxDecoration(
-                    borderRadius: new BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                    gradient: LinearGradient(colors: [
-                      Colors.deepPurpleAccent.withOpacity(.2),
-                      Colors.deepPurpleAccent.withOpacity(.1),
-                    ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class SearchWidget extends StatelessWidget {
-  TextEditingController controller =
-      TextEditingController(text: 'ФИО, специальность или болезнь');
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -679,6 +780,7 @@ class SearchWidget extends StatelessWidget {
         child: TextField(
           controller: controller,
           decoration: InputDecoration(
+            hintText: 'ФИО, специальность или болезнь',
             fillColor: Colors.deepPurpleAccent.withOpacity(.1),
             filled: true,
             suffixIcon: Icon(
@@ -699,8 +801,6 @@ class SearchWidget extends StatelessWidget {
 }
 
 class HeaderWidget extends StatelessWidget {
-  TextEditingController controller =
-      TextEditingController(text: 'ФИО, специальность или болезнь');
   @override
   Widget build(BuildContext context) {
     return SafeArea(

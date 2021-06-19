@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicine_app/ui/views/screens/index.dart';
 import 'package:medicine_app/ui/widgets/google_map.dart';
 import 'package:medicine_app/util/text.dart';
 
@@ -57,6 +58,7 @@ class _AppointScreenState extends State<AppointScreen> {
                       child: GestureDetector(
                         onTap: () => setState(() {
                           isCategorySelected = true;
+                          Navigator.pushNamed(context, MapScreen.route);
                         }),
                         child: Text(
                           specialities[index],
