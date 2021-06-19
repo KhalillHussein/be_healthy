@@ -9,101 +9,217 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+  bool showStoryes = false;
+
   @override
   Widget build(BuildContext context) {
     StoryController storyController = StoryController();
     List<StoryItem> storyItems = [
-      StoryItem.text(
-        title: "ddddd",
-        backgroundColor: Colors.orange,
-        roundedTop: true,
-      ),
-      StoryItem.text(
-        title: "ффффф",
-        backgroundColor: Colors.blue,
-        roundedTop: true,
-      ),
+      StoryItem.inlineImage(
+          url:
+              'https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300',
+          caption: Text(
+            'Вакцинация от COVID-19 — зло или возможность?',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 32),
+          ),
+          controller: storyController),
+      StoryItem.inlineImage(
+          url:
+              'https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300',
+          caption: Text(
+            'Вакцинация от COVID-19 — зло или возможность?',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 32),
+          ),
+          controller: storyController),
+      StoryItem.inlineImage(
+          url:
+              'https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300',
+          caption: Text(
+            'Вакцинация от COVID-19 — зло или возможность?',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 32),
+          ),
+          controller: storyController),
     ];
     return Scaffold(
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeaderWidget(),
-              SearchWidget(),
-              Container(
-                margin: EdgeInsets.all(12),
-                height: 148.0,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
+      body: showStoryes
+          ? StoryView(
+              storyItems: storyItems,
+              controller: storyController,
+              repeat: true,
+              onStoryShow: (s) {},
+              onComplete: () {
+                setState(() {
+                  showStoryes = false;
+                });
+              },
+              onVerticalSwipeComplete: (direction) {
+                if (direction == Direction.down) {
+                  Navigator.pop(context);
+                }
+              })
+          : Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HeaderWidget(),
+                    SearchWidget(),
                     Container(
-                      width: 148,
-                      child: StoryView(
-                          storyItems: storyItems,
-                          controller: storyController,
-                          repeat: true,
-                          onStoryShow: (s) {},
-                          onComplete: () {},
-                          onVerticalSwipeComplete: (direction) {
-                            if (direction == Direction.down) {
-                              Navigator.pop(context);
-                            }
-                          }),
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: InkWell(
-                        child: Container(
-                          width: 148,
-                          decoration: BoxDecoration(
-                            borderRadius: new BorderRadius.all(
-                              Radius.circular(12.0),
+                      margin: EdgeInsets.all(12),
+                      height: 148.0,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
                             ),
-                            gradient: LinearGradient(
-                                colors: [
-                                  Colors.deepPurpleAccent.withOpacity(.2),
-                                  Colors.deepPurpleAccent.withOpacity(.1),
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomCenter),
+                            child: InkWell(
+                              onTap: () => {
+                                print(showStoryes),
+                                setState(() {
+                                  showStoryes = true;
+                                })
+                              },
+                              child: Container(
+                                width: 148,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    Radius.circular(12.0),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  ),
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 56),
+                                  child: Text(
+                                    "Вакцинация от COVID-19 — зло или возможность?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      backgroundColor: Colors.black38,
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: InkWell(
+                              onTap: () => {
+                                print(showStoryes),
+                                setState(() {
+                                  showStoryes = true;
+                                })
+                              },
+                              child: Container(
+                                width: 148,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    Radius.circular(12.0),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  ),
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 56),
+                                  child: Text(
+                                    "Вакцинация от COVID-19 — зло или возможность?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      backgroundColor: Colors.black38,
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: InkWell(
+                              onTap: () => {
+                                print(showStoryes),
+                                setState(() {
+                                  showStoryes = true;
+                                })
+                              },
+                              child: Container(
+                                width: 148,
+                                decoration: BoxDecoration(
+                                  borderRadius: new BorderRadius.all(
+                                    Radius.circular(12.0),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.topCenter,
+                                  ),
+                                ),
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 56),
+                                  child: Text(
+                                    "Вакцинация от COVID-19 — зло или возможность?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      backgroundColor: Colors.black38,
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    Text(
+                      'Сервисы',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    ServicesWidget(),
+                    Text(
+                      'Трекеры',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    TrackersWidget(),
                   ],
                 ),
               ),
-              Text(
-                'Сервисы',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              ServicesWidget(),
-              Text(
-                'Трекеры',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              TrackersWidget(),
-            ],
-          ),
-        ),
-      ), /* CustomScrollView(
+            ), /* CustomScrollView(
         slivers: [
           SliverAppBar(
             toolbarHeight: 86,
