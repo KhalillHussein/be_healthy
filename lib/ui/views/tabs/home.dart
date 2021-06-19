@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import '../screens/index.dart';
@@ -42,46 +43,7 @@ class HomeTab extends StatelessWidget {
             ],
           ),
         ),
-      ), /* CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            toolbarHeight: 86,
-            automaticallyImplyLeading: false,
-            expandedHeight: MediaQuery.of(context).size.height * 0.1,
-            title: Text(
-              'Главная',
-              style: Theme.of(context).textTheme.headline5!.copyWith(
-                    color: Color(0xFF0B225A),
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.25,
-                    fontSize: 34,
-                  ),
-            ),
-            // pinned: true,
-          ),
-          SliverSafeArea(
-            top: false,
-            sliver: SliverToBoxAdapter(
-              child: Center(
-                child: Column(
-                  children: [
-                    TextButton(
-                      child: Text('Чат'),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, ChatScreen.route),
-                    ),
-                    TextButton(
-                      child: Text('Запись'),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, AppointScreen.route),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ), */
+      ),
     );
   }
 }
@@ -669,38 +631,52 @@ class HorisontalCardsWidget extends StatelessWidget {
 }
 
 class SearchWidget extends StatelessWidget {
-  TextEditingController controller =
-      TextEditingController(text: 'ФИО, специальность или болезнь');
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        margin: EdgeInsets.all(12),
-        child: TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            fillColor: Colors.deepPurpleAccent.withOpacity(.1),
-            filled: true,
-            suffixIcon: Icon(
-              Icons.search_rounded,
-            ),
-            border: new OutlineInputBorder(
-              borderSide: BorderSide(
-                  width: 0, color: Colors.white, style: BorderStyle.none),
-              borderRadius: const BorderRadius.all(
-                const Radius.circular(12.0),
-              ),
-            ),
+          decoration: BoxDecoration(
+            color: Color(0xFFF4F5FC),
+            borderRadius: BorderRadius.circular(12),
           ),
-        ),
-      ),
+          margin: EdgeInsets.all(12),
+          padding: EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "ФИО или специальность",
+                style: TextStyle(
+                    color: Color(0xFF5C698B),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 0.15),
+              ),
+              Icon(
+                Icons.search_rounded,
+                color: Color(0xFF5C698B),
+              ),
+            ],
+          )
+          // TextField(
+          //   decoration: InputDecoration(
+          //       border: OutlineInputBorder(
+          //         borderSide: BorderSide.none,
+          //         borderRadius: BorderRadius.circular(12),
+          //       ),
+          //       suffixIcon: Icon(Icons.search_rounded),
+          //       filled: true,
+          //       hintStyle:
+          //           TextStyle(color: Color(0xFF5C698B), letterSpacing: 0.15),
+          //       hintText: "ФИО, специальность или болезнь",
+          //       fillColor: Color(0xFFF4F5FC)),
+          // ),
+          ),
     );
   }
 }
 
 class HeaderWidget extends StatelessWidget {
-  TextEditingController controller =
-      TextEditingController(text: 'ФИО, специальность или болезнь');
   @override
   Widget build(BuildContext context) {
     return SafeArea(
