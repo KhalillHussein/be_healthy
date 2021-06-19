@@ -101,6 +101,9 @@ class ServicesWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: InkWell(
+                  onTap: () => {
+                    Navigator.pushNamed(context, MapScreen.route),
+                  },
                   child: Container(
                     height: 108,
                     decoration: BoxDecoration(
