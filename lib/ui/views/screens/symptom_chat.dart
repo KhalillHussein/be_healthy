@@ -109,7 +109,11 @@ class _ChatScreenState extends State<SymptomChatScreen> {
                 margin: EdgeInsets.all(12),
                 child: FloatingActionButton.extended(
                   backgroundColor: Colors.white,
-                  onPressed: () => {},
+                  onPressed: () => {
+                    onSend(
+                      ChatMessage(text: button['display'], user: user),
+                    )
+                  },
                   icon: Icon(Icons.check_rounded),
                   label: Text('Выбрать'),
                 ),
@@ -162,8 +166,10 @@ class _ChatScreenState extends State<SymptomChatScreen> {
         sendOnEnter: true,
         textInputAction: TextInputAction.send,
         user: user,
+        scrollController:
+            ScrollController(initialScrollOffset: 100, keepScrollOffset: true),
         messageDecorationBuilder: (message, isUser) => BoxDecoration(
-          color: isUser! ? Color(0xFFD9DCF2) : Color(0xFF7D98FB),
+          color: isUser! ? Color(0xFF565C8B) : Color(0xFF7D98FB),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.0),
             topRight: Radius.circular(20.0),

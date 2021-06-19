@@ -193,23 +193,25 @@ class _HomeTabState extends State<HomeTab> {
                         ],
                       ),
                     ),
+                    SizedBox(height: 24),
                     Text(
-                      'Сервисы',
+                      '   Сервисы',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                          fontSize: 24),
                     ),
                     SizedBox(
                       height: 18,
                     ),
                     ServicesWidget(),
+                    SizedBox(height: 36),
                     Text(
-                      'Трекеры',
+                      '   Трекеры',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                          fontSize: 24),
                     ),
                     SizedBox(
                       height: 18,
@@ -291,20 +293,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.purpleAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width / 2.2,
+                    width: MediaQuery.of(context).size.width * 0.47,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width / 4,
+                              width: MediaQuery.of(context).size.width * 0.2,
                               child: Text(
                                 'Запись в клинику',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -312,9 +314,7 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
-                            ),
+                            Image.asset('assets/Calendar.png'),
                           ],
                         ),
                       ],
@@ -341,20 +341,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.redAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width / 2.1,
+                    width: MediaQuery.of(context).size.width * 0.47,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width / 3.5,
+                              width: MediaQuery.of(context).size.width * 0.2,
                               child: Text(
                                 'Онлайн-консультация',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -362,8 +362,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Cloud.png'),
                             ),
                           ],
                         ),
@@ -396,20 +396,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.lightBlue.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.41,
+                    width: MediaQuery.of(context).size.width * 0.44,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.2,
+                              width: MediaQuery.of(context).size.width * 0.14,
                               child: Text(
                                 'Вызов врача на дом',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -417,8 +417,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Phone.png'),
                             ),
                           ],
                         ),
@@ -450,13 +450,13 @@ class ServicesWidget extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.3,
+                              width: MediaQuery.of(context).size.width * 0.24,
                               child: Text(
                                 'Плановые осмотры',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -464,8 +464,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Clock.png'),
                             ),
                           ],
                         ),
@@ -498,20 +498,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.redAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.53,
+                    width: MediaQuery.of(context).size.width * 0.52,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.3,
+                              width: MediaQuery.of(context).size.width * 0.27,
                               child: Text(
                                 'Прием медикоментов',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -519,8 +519,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Clock-1.png'),
                             ),
                           ],
                         ),
@@ -548,20 +548,20 @@ class ServicesWidget extends StatelessWidget {
                         Colors.purpleAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.42,
                     child: Row(
                       children: [
                         Column(
                           children: [
                             Container(
                               margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.2,
+                              width: MediaQuery.of(context).size.width * 0.17,
                               child: Text(
                                 'Симптом чекер',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                    fontSize: 14),
                               ),
                             ),
                           ],
@@ -569,8 +569,8 @@ class ServicesWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            FlutterLogo(
-                              size: 56,
+                            Container(
+                              child: Image.asset('assets/Hearts.png'),
                             ),
                           ],
                         ),
@@ -630,7 +630,7 @@ class TrackersWidget extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.all(8),
                               child: Text(
-                                '0',
+                                '1328',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 34,
@@ -717,7 +717,7 @@ class TrackersWidget extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.all(8),
                               child: Text(
-                                '1223',
+                                '1940',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 34,
