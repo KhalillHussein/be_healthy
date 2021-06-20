@@ -271,108 +271,127 @@ class ServicesWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: InkWell(
-                  onTap: () => {
-                    Navigator.pushNamed(context, AppointScreen.route),
-                  },
-                  child: Container(
-                    height: 108,
-                    decoration: BoxDecoration(
-                      borderRadius: new BorderRadius.all(
-                        Radius.circular(12.0),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: InkWell(
+                    onTap: () => {
+                      Navigator.pushNamed(context, AppointScreen.route),
+                    },
+                    child: Container(
+                      height: 108,
+                      decoration: BoxDecoration(
+                        borderRadius: new BorderRadius.all(
+                          Radius.circular(12.0),
+                        ),
+                        gradient: LinearGradient(
+                            colors: [
+                              Colors.purpleAccent.withOpacity(.6),
+                              Colors.purpleAccent.withOpacity(.2),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomCenter),
                       ),
-                      gradient: LinearGradient(colors: [
-                        Colors.purpleAccent.withOpacity(.6),
-                        Colors.purpleAccent.withOpacity(.2),
-                      ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.47,
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.2,
-                              child: Text(
-                                'Запись в клинику',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
+                      width: MediaQuery.of(context).size.width * 0.46,
+                      child: Stack(
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(8),
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                child: Text(
+                                  'Запись в клинику',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                ),
                               ),
+                            ],
+                          ),
+                          Positioned(
+                            top: 20,
+                            left: 80,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Image.asset('assets/Calendar.png'),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Image.asset('assets/Calendar.png'),
-                          ],
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: InkWell(
-                  onTap: () => {
-                    Navigator.pushNamed(context, ChatScreen.route),
-                  },
-                  child: Container(
-                    height: 108,
-                    decoration: BoxDecoration(
-                      borderRadius: new BorderRadius.all(
-                        Radius.circular(12.0),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: InkWell(
+                    onTap: () => {
+                      Navigator.pushNamed(context, ChatScreen.route),
+                    },
+                    child: Container(
+                      height: 108,
+                      decoration: BoxDecoration(
+                        borderRadius: new BorderRadius.all(
+                          Radius.circular(12.0),
+                        ),
+                        gradient: LinearGradient(
+                            colors: [
+                              Colors.redAccent.withOpacity(.6),
+                              Colors.redAccent.withOpacity(.2),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomCenter),
                       ),
-                      gradient: LinearGradient(colors: [
-                        Colors.redAccent.withOpacity(.6),
-                        Colors.redAccent.withOpacity(.2),
-                      ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.47,
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(8),
-                              width: MediaQuery.of(context).size.width * 0.2,
-                              child: Text(
-                                'Онлайн-консультация',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14),
-                              ),
+                      width: MediaQuery.of(context).size.width * 0.42,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            child: Column(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(8),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  child: Text(
+                                    'Онлайн-консультация',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              child: Image.asset('assets/Cloud.png'),
+                          ),
+                          Positioned(
+                            top: 20,
+                            left: 80,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  child: Image.asset('assets/Cloud.png'),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           SizedBox(
             height: 8,
@@ -396,8 +415,8 @@ class ServicesWidget extends StatelessWidget {
                         Colors.lightBlue.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.44,
-                    child: Row(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: Stack(
                       children: [
                         Column(
                           children: [
@@ -414,14 +433,18 @@ class ServicesWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              child: Image.asset('assets/Phone.png'),
-                            ),
-                          ],
-                        ),
+                        Positioned(
+                          top: 20,
+                          left: 80,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                child: Image.asset('assets/Phone.png'),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -443,8 +466,8 @@ class ServicesWidget extends StatelessWidget {
                         Colors.blueAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Row(
+                    width: MediaQuery.of(context).size.width * 0.47,
+                    child: Stack(
                       children: [
                         Column(
                           children: [
@@ -461,13 +484,17 @@ class ServicesWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              child: Image.asset('assets/Clock.png'),
-                            ),
-                          ],
+                        Positioned(
+                          top: 20,
+                          left: 80,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                child: Image.asset('assets/Clock.png'),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -498,8 +525,8 @@ class ServicesWidget extends StatelessWidget {
                         Colors.redAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.52,
-                    child: Row(
+                    width: MediaQuery.of(context).size.width * 0.49,
+                    child: Stack(
                       children: [
                         Column(
                           children: [
@@ -516,13 +543,17 @@ class ServicesWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              child: Image.asset('assets/Clock-1.png'),
-                            ),
-                          ],
+                        Positioned(
+                          top: 20,
+                          left: 110,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                child: Image.asset('assets/Clock-1.png'),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -548,8 +579,8 @@ class ServicesWidget extends StatelessWidget {
                         Colors.purpleAccent.withOpacity(.2),
                       ], begin: Alignment.topLeft, end: Alignment.bottomCenter),
                     ),
-                    width: MediaQuery.of(context).size.width * 0.42,
-                    child: Row(
+                    width: MediaQuery.of(context).size.width * 0.38,
+                    child: Stack(
                       children: [
                         Column(
                           children: [
@@ -566,13 +597,17 @@ class ServicesWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                              child: Image.asset('assets/Hearts.png'),
-                            ),
-                          ],
+                        Positioned(
+                          top: 20,
+                          left: 80,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                child: Image.asset('assets/Hearts.png'),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
