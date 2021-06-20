@@ -88,30 +88,30 @@ class _HomeTabState extends State<HomeTab> {
                           // })
                         },
                         child: Container(
-                          width: 148,
+                          width: 135,
                           decoration: BoxDecoration(
                             borderRadius: new BorderRadius.all(
                               Radius.circular(12.0),
                             ),
                             image: DecorationImage(
                               image: NetworkImage(
-                                  "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                  "https://i.imgur.com/eyCjAae.png"),
                               fit: BoxFit.cover,
                               alignment: Alignment.topCenter,
                             ),
                           ),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 56),
-                            child: Text(
-                              "Вакцинация от COVID-19 — зло или возможность?",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                backgroundColor: Colors.black38,
-                                color: Colors.white,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
+                          // child: Container(
+                          //   margin: EdgeInsets.only(top: 56),
+                          //   child: Text(
+                          //     "Вакцинация от COVID-19 — зло или возможность?",
+                          //     textAlign: TextAlign.center,
+                          //     style: TextStyle(
+                          //       backgroundColor: Colors.black38,
+                          //       color: Colors.white,
+                          //       fontSize: 14,
+                          //     ),
+                          //   ),
+                          // ),
                         ),
                       ),
                     ),
@@ -127,30 +127,30 @@ class _HomeTabState extends State<HomeTab> {
                           })
                         },
                         child: Container(
-                          width: 148,
+                          width: 135,
                           decoration: BoxDecoration(
                             borderRadius: new BorderRadius.all(
                               Radius.circular(12.0),
                             ),
                             image: DecorationImage(
                               image: NetworkImage(
-                                  "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                  "https://i.imgur.com/4EJuL09.png"),
                               fit: BoxFit.cover,
                               alignment: Alignment.topCenter,
                             ),
                           ),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 56),
-                            child: Text(
-                              "Вакцинация от COVID-19 — зло или возможность?",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                backgroundColor: Colors.black38,
-                                color: Colors.white,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
+                          // child: Container(
+                          //   margin: EdgeInsets.only(top: 56),
+                          //   child: Text(
+                          //     "Вакцинация от COVID-19 — зло или возможность?",
+                          //     textAlign: TextAlign.center,
+                          //     style: TextStyle(
+                          //       backgroundColor: Colors.black38,
+                          //       color: Colors.white,
+                          //       fontSize: 14,
+                          //     ),
+                          //   ),
+                          // ),
                         ),
                       ),
                     ),
@@ -167,30 +167,30 @@ class _HomeTabState extends State<HomeTab> {
                           })
                         },
                         child: Container(
-                          width: 148,
+                          width: 135,
                           decoration: BoxDecoration(
                             borderRadius: new BorderRadius.all(
                               Radius.circular(12.0),
                             ),
                             image: DecorationImage(
                               image: NetworkImage(
-                                  "https://im0-tub-ru.yandex.net/i?id=1165f157f2a28ef205fcb75868763451&ref=rim&n=33&w=420&h=300"),
+                                  "https://i.imgur.com/GXgZglR.png"),
                               fit: BoxFit.cover,
                               alignment: Alignment.topCenter,
                             ),
                           ),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 56),
-                            child: Text(
-                              "Вакцинация от COVID-19 — зло или возможность?",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                backgroundColor: Colors.black38,
-                                color: Colors.white,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
+                          // child: Container(
+                          //   margin: EdgeInsets.only(top: 56),
+                          //   child: Text(
+                          //     "Вакцинация от COVID-19 — зло или возможность?",
+                          //     textAlign: TextAlign.center,
+                          //     style: TextStyle(
+                          //       backgroundColor: Colors.black38,
+                          //       color: Colors.white,
+                          //       fontSize: 14,
+                          //     ),
+                          //   ),
+                          // ),
                         ),
                       ),
                     ),
