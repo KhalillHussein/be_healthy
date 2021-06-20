@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:medicine_app/providers/appoint.dart';
+import 'package:medicine_app/providers/calendar.dart';
 
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,6 +28,12 @@ class MedicApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (ctx) => NavigationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => AppointProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => TableCalendarProvider(),
         ),
       ],
       child: MaterialApp(

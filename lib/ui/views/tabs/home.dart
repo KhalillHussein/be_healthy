@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:story_view/story_view.dart';
@@ -220,46 +221,7 @@ class _HomeTabState extends State<HomeTab> {
                   ],
                 ),
               ),
-            ), /* CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            toolbarHeight: 86,
-            automaticallyImplyLeading: false,
-            expandedHeight: MediaQuery.of(context).size.height * 0.1,
-            title: Text(
-              'Главная',
-              style: Theme.of(context).textTheme.headline5!.copyWith(
-                    color: Color(0xFF0B225A),
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.25,
-                    fontSize: 34,
-                  ),
             ),
-            // pinned: true,
-          ),
-          SliverSafeArea(
-            top: false,
-            sliver: SliverToBoxAdapter(
-              child: Center(
-                child: Column(
-                  children: [
-                    TextButton(
-                      child: Text('Чат'),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, ChatScreen.route),
-                    ),
-                    TextButton(
-                      child: Text('Запись'),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, AppointScreen.route),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ), */
     );
   }
 }
@@ -271,6 +233,7 @@ class ServicesWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+/* <<<<<<< HEAD */
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -296,6 +259,24 @@ class ServicesWidget extends StatelessWidget {
                             ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomCenter),
+/* =======
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: InkWell(
+                  onTap: () => {
+                    Navigator.pushNamed(context, AppointScreen.route),
+                  },
+                  child: Container(
+                    height: 108,
+                    decoration: BoxDecoration(
+                      borderRadius: new BorderRadius.all(
+                        Radius.circular(12.0),
+>>>>>>> dbffa55a903c48d97b217dceb2e281646ffca753 */
                       ),
                       width: MediaQuery.of(context).size.width * 0.46,
                       child: Stack(
@@ -806,32 +787,72 @@ class TrackersWidget extends StatelessWidget {
 }
 
 class SearchWidget extends StatelessWidget {
+//<<<<<<< HEAD
   TextEditingController controller = TextEditingController();
+/* =======
+>>>>>>> dbffa55a903c48d97b217dceb2e281646ffca753 */
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        margin: EdgeInsets.all(12),
-        child: TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            hintText: 'ФИО, специальность или болезнь',
-            fillColor: Colors.deepPurpleAccent.withOpacity(.1),
-            filled: true,
-            suffixIcon: Icon(
-              Icons.search_rounded,
-            ),
-            border: new OutlineInputBorder(
-              borderSide: BorderSide(
-                  width: 0, color: Colors.white, style: BorderStyle.none),
-              borderRadius: const BorderRadius.all(
-                const Radius.circular(12.0),
-              ),
-            ),
+        child: Container(
+/* <<<<<<< HEAD */
+            margin: EdgeInsets.all(12),
+            child: TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                    hintText: 'ФИО, специальность или болезнь',
+                    fillColor: Colors.deepPurpleAccent.withOpacity(.1),
+                    filled: true,
+                    suffixIcon: Icon(
+                      Icons.search_rounded,
+                    ),
+                    border: new OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: 0,
+                          color: Colors.white,
+                          style: BorderStyle.none),
+                      borderRadius: const BorderRadius.all(
+                        const Radius.circular(12.0),
+/* =======
+          decoration: BoxDecoration(
+            color: Color(0xFFF4F5FC),
+            borderRadius: BorderRadius.circular(12),
           ),
-        ),
-      ),
-    );
+          margin: EdgeInsets.all(12),
+          padding: EdgeInsets.all(15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "ФИО или специальность",
+                style: TextStyle(
+                    color: Color(0xFF5C698B),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 0.15),
+>>>>>>> dbffa55a903c48d97b217dceb2e281646ffca753 */
+                        /*        ),
+              Icon(
+                Icons.search_rounded,
+                color: Color(0xFF5C698B),
+              ),
+            ],
+          ) */
+                        // TextField(
+                        //   decoration: InputDecoration(
+                        //       border: OutlineInputBorder(
+                        //         borderSide: BorderSide.none,
+                        //         borderRadius: BorderRadius.circular(12),
+                        //       ),
+                        //       suffixIcon: Icon(Icons.search_rounded),
+                        //       filled: true,
+                        //       hintStyle:
+                        //           TextStyle(color: Color(0xFF5C698B), letterSpacing: 0.15),
+                        //       hintText: "ФИО, специальность или болезнь",
+                        //       fillColor: Color(0xFFF4F5FC)),
+                        // ),
+                      ),
+                    )))));
   }
 }
 

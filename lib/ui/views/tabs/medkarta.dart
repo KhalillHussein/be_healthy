@@ -61,6 +61,12 @@ class _MedkartaTabState extends State<MedkartaTab> {
               child: StreamBuilder(
                   stream: FirebaseAuth.instance.authStateChanges(),
                   builder: (ctx, userSnapshot) {
+                    if (userSnapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                     if (!userSnapshot.hasData) {
                       return ErrorScreen();
                     }

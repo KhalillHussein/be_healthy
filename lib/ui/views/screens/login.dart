@@ -133,11 +133,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           fillColor: Color(0xFFF4F5FC)),
                     ),
                     const SizedBox(height: 20),
-                    GradientButton(
+                    CustomGradientButton(
                       label: 'Войти',
                       onPressed: _trySubmit,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 143, vertical: 12),
                     ),
                     const SizedBox(height: 16),
                     GestureDetector(
